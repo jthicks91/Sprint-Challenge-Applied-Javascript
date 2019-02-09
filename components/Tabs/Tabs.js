@@ -16,8 +16,9 @@ class TabLink {
     } else {
       // else if `all` is false, only select the cards with matching this.tabData values
       this.cards = document.querySelectorAll(
-        `.cards[data-tab = "${this.tabData}"]`
+        `.card[data-tab = "${this.tabData}"]`
       );
+      console.log(this.cards);
     }
     //  <- Delete this comment block when you work on the if statement
 
@@ -25,9 +26,7 @@ class TabLink {
     this.cards = Array.from(this.cards).map(card => new TabCard(card));
 
     // Add a click event that invokes this.selectTab
-    this.tabElement.addEventListener("click", event => {
-      this.selectTab(event);
-    });
+    this.tabElement.addEventListener("click", this.selectTab.bind(this));
   }
 
   selectTab() {
@@ -40,7 +39,7 @@ class TabLink {
     // Iterate through the NodeList setting the display style each one to 'none'
     cards.forEach(card => (card.style.display = "none"));
     // Add a class of ".active-tab" to this.tabElement
-    this.tabElement.addClass(".active-tab");
+    this.tabElement.classList.add(".active-tab");
     // Notice we are looping through the this.cards array and invoking selectCard() from the TabCard class. Just un-comment the code and study what is happening here.
     this.cards.forEach(card => card.selectCard());
   }
@@ -49,11 +48,11 @@ class TabLink {
 class TabCard {
   constructor(cardElement) {
     // Assign this.cardElement to the cardElement DOM reference
-    // this.cardElement;
+    this.cardElement = cardElement;
   }
   selectCard() {
     // Update the style of this.cardElement to display = "flex"
-    // this.cardElement;
+    this.cardElement.style.display = "flex";
   }
 }
 
