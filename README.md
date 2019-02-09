@@ -69,4 +69,3 @@ Your stretch challenge is to write the functionality of a `Carousel` component. 
 
 * [ ] If you have finished the above, play around with the styling on all the components, and understand how each is built.
 
-jdklsjfklsjd
